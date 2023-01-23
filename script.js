@@ -20,6 +20,7 @@ if ((/Android/i.test(navigator.userAgent))||(/iPad|iPhone|iPod/i.test(navigator.
 eventing1 = "touchmove";
 eventing2 = "touchstart";
 eventing3 = "touchend";
+console.log(true, navigator.userAgent) ;
         }
    
         else {
@@ -28,12 +29,6 @@ eventing1 = "mousemove";
   eventing2 = "mousedown";
   eventing3 = "mouseup";
         }})
-let hasMouse = false;
-
-window.onmousemove = function () {
-  hasMouse = true;
-  
-};
 let x, y;
 document.addEventListener("DOMContentLoaded", startup);
 function startup() {

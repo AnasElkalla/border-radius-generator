@@ -234,7 +234,6 @@ h1 {
   height: 50%;
   animation: stretch 5s linear forwards;
   white-space: nowrap;
-  overflow: hidden;
 }
 @keyframes stretch {
   100% {

@@ -63,7 +63,7 @@ flex-direction :column;
 @media (max-width: 900px) {
   .container {
     flex-direction: column;
-    height: 70vh;
+    height: 75vh;
     width: 100%;
   }
   .shape {

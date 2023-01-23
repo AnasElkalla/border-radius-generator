@@ -12,27 +12,31 @@ const containerRect = itemContainer.getBoundingClientRect();
 const fontsize = parseInt(window.getComputedStyle(document.body).fontSize);
 console.log(fontsize);
 let eventing1;
-let eventing2 ;
-let eventing3 ;
-window.addEventListener("load",function(e){
-if ((/Android/i.test(navigator.userAgent))||(/iPad|iPhone|iPod/i.test(navigator.userAgent)) ) {
-            // go to Google Play Store
-eventing1 = "touchmove";
-eventing2 = "touchstart";
-eventing3 = "touchend";
-console.log(true, navigator.userAgent) ;
-        }
-   
-        else {
-            // go to another website
-eventing1 = "mousemove";
-  eventing2 = "mousedown";
-  eventing3 = "mouseup";
-        }})
+let eventing2;
+let eventing3;
 let x, y;
-document.addEventListener("DOMContentLoaded", startup);
-function startup() {
-  let active = false;
+let active = false;
+window.addEventListener("load", function (e) {
+  if (
+    /Android/i.test(navigator.userAgent) ||
+    /iPad|iPhone|iPod/i.test(navigator.userAgent)
+  ) {
+    // go to Google Play Store
+    eventing1 = "touchmove";
+    eventing2 = "touchstart";
+    eventing3 = "touchend";
+    console.log(true, navigator.userAgent);
+    process();
+  } else {
+    // go to another website
+    eventing1 = "mousemove";
+    eventing2 = "mousedown";
+    eventing3 = "mouseup";
+    console.log(false, navigator.userAgent);
+    process();
+  }
+});
+function process() {
   document.addEventListener(eventing3, closeDragElement);
   function closeDragElement(e) {
     console.log("triggered");
@@ -63,7 +67,6 @@ function startup() {
       x = event.changedTouches[0].clientX;
       y = event.changedTouches[0].clientY;
     }
-    console.log(event.changedTouches[0].clientX);
     if (active) {
       if (
         up.classList.contains("clicked") ||

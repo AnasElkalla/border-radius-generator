@@ -14,7 +14,7 @@ console.log(fontsize);
 let eventing1;
 let eventing2 ;
 let eventing3 ;
-Window.addEventListener("load",function(e){
+window.addEventListener("load",function(e){
 if ((/Android/i.test(navigator.userAgent))||(/iPad|iPhone|iPod/i.test(navigator.userAgent)) ) {
             // go to Google Play Store
 eventing1 = "touchmove";

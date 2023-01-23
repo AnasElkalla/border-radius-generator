@@ -11,15 +11,28 @@ const itemContainer = document.querySelector(".item-container");
 const containerRect = itemContainer.getBoundingClientRect();
 const fontsize = parseInt(window.getComputedStyle(document.body).fontSize);
 console.log(fontsize);
-let hasMouse = false;
-let eventing1 = "touchmove";
-let eventing2 = "touchstart";
-let eventing3 = "touchend";
-window.onmousemove = function () {
-  hasMouse = true;
-  eventing1 = "mousemove";
+let eventing1;
+let eventing2 ;
+let eventing3 ;
+Window.addeventlistener("load",function(e){
+if ((/Android/i.test(navigator.userAgent))||(/iPad|iPhone|iPod/i.test(navigator.userAgent)) ) {
+            // go to Google Play Store
+eventing1 = "touchmove";
+eventing2 = "touchstart";
+eventing3 = "touchend";
+        }
+   
+        else {
+            // go to another website
+eventing1 = "mousemove";
   eventing2 = "mousedown";
   eventing3 = "mouseup";
+        }})
+let hasMouse = false;
+
+window.onmousemove = function () {
+  hasMouse = true;
+  
 };
 let x, y;
 document.addEventListener("DOMContentLoaded", startup);

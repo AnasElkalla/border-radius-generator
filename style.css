@@ -288,12 +288,14 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index:10
 }
 .owner {
   margin-right: 20px;
 }
 footer a {
   color: var(--white);
+  cursor:pointer
 }
 
 .bg {

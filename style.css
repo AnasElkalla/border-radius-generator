@@ -172,6 +172,11 @@ flex-direction :column;
   height: 100%;
   margin-top: 1rem;
 }
+@media (max-width:1000px){
+  .value{
+    width:25rem
+  }
+}
 .box {
   display: flex;
 }

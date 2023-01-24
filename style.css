@@ -230,10 +230,10 @@ h1 {
   font-size: 4rem;
   margin-left:calc(50% - 350px);
   width: 0;
-  height: 50%;
+  height: 55%;
   animation: stretch 5s linear forwards;
   white-space: nowrap;
-  overflow-x:hidden
+  overflow:hidden
 }
 @keyframes stretch {
   100% {

@@ -20,7 +20,6 @@ const block = document.querySelector(".block");
 const modeContainer = document.querySelectorAll(".item-container");
 const switcher = document.querySelector(".switcher");
 const fontsize = parseInt(window.getComputedStyle(document.body).fontSize);
-console.log(fontsize, up.classList);
 let eventing1;
 let eventing2;
 let eventing3;
@@ -50,7 +49,6 @@ function process() {
   document.addEventListener(eventing3, closeDragElement);
   keys = document.querySelectorAll(".item-container.active span:not(.item");
   function closeDragElement(e) {
-    console.log("triggered");
     active = false;
     keys.forEach((key) => {
       key.classList.remove("clicked");
@@ -58,13 +56,11 @@ function process() {
   }
   document.addEventListener(eventing2, function (e) {
     keys = document.querySelectorAll(".item-container.active span:not(.item");
-    console.log(e);
     if (eventing2 === "mousedown") {
       e.preventDefault();
     }
     keys.forEach((key) => {
       if (e.target === key) {
-        console.log("Active");
         active = true;
         key.classList.add("clicked");
       }
@@ -176,7 +172,6 @@ switcher.addEventListener("click", function (e) {
   itemContainer = document.querySelector(".item-container.active");
   containerRect = itemContainer.getBoundingClientRect();
   item = document.querySelector(".active .item");
-  console.log(keys, itemContainer);
   spans.forEach((ele) => (ele.textContent = "50%"));
   document
     .querySelectorAll(".item")

@@ -1,14 +1,24 @@
 "use strict";
 const up = document.querySelector(".up");
+const up1 = document.querySelector(".up1");
+const up2 = document.querySelector(".up2");
 const down = document.querySelector(".bottom");
+const down1 = document.querySelector(".bottom1");
+const down2 = document.querySelector(".bottom2");
 const right = document.querySelector(".right");
+const right1 = document.querySelector(".right1");
+const right2 = document.querySelector(".right2");
 const left = document.querySelector(".left");
-const keys = document.querySelectorAll(".item-container span:not(.item");
+const left1 = document.querySelector(".left1");
+const left2 = document.querySelector(".left2");
+let keys = document.querySelectorAll(".item-container.active span:not(.item");
+let itemContainer = document.querySelector(".item-container.active");
+let containerRect = itemContainer.getBoundingClientRect();
 const spans = document.querySelectorAll(".code span");
-const item = document.querySelector(".item");
+let item = document.querySelector(".active .item");
 const block = document.querySelector(".block");
-const itemContainer = document.querySelector(".item-container");
-const containerRect = itemContainer.getBoundingClientRect();
+const modeContainer = document.querySelectorAll(".item-container");
+const switcher = document.querySelector(".switcher");
 const fontsize = parseInt(window.getComputedStyle(document.body).fontSize);
 console.log(fontsize);
 let eventing1;
@@ -38,6 +48,7 @@ window.addEventListener("load", function (e) {
 });
 function process() {
   document.addEventListener(eventing3, closeDragElement);
+  keys = document.querySelectorAll(".item-container.active span:not(.item");
   function closeDragElement(e) {
     console.log("triggered");
     active = false;
@@ -46,6 +57,7 @@ function process() {
     });
   }
   document.addEventListener(eventing2, function (e) {
+    keys = document.querySelectorAll(".item-container.active span:not(.item");
     console.log(e);
     if (eventing2 === "mousedown") {
       e.preventDefault();
@@ -70,7 +82,11 @@ function process() {
     if (active) {
       if (
         up.classList.contains("clicked") ||
-        down.classList.contains("clicked")
+        up1.classList.contains("clicked") ||
+        up2.classList.contains("clicked") ||
+        down.classList.contains("clicked") ||
+        down1.classList.contains("clicked") ||
+        down2.classList.contains("clicked")
       ) {
         keys.forEach((key) => {
           let left;
@@ -91,12 +107,24 @@ function process() {
             } else if (key === down) {
               spans[2].textContent = `${100 - Math.trunc((left * 100) / 30)}%`;
               spans[3].textContent = `${Math.trunc((left * 100) / 30)}%`;
+            } else if (key === up1) {
+              spans[0].textContent = `${Math.trunc((left * 100) / 30)}%`;
+            } else if (key === up2) {
+              spans[1].textContent = `${100 - Math.trunc((left * 100) / 30)}%`;
+            } else if (key === down1) {
+              spans[2].textContent = `${100 - Math.trunc((left * 100) / 30)}%`;
+            } else if (key === down2) {
+              spans[3].textContent = `${Math.trunc((left * 100) / 30)}%`;
             }
           }
         });
       } else if (
         left.classList.contains("clicked") ||
-        right.classList.contains("clicked")
+        left1.classList.contains("clicked") ||
+        left2.classList.contains("clicked") ||
+        right.classList.contains("clicked") ||
+        right1.classList.contains("clicked") ||
+        right2.classList.contains("clicked")
       ) {
         keys.forEach((key) => {
           let top;
@@ -114,8 +142,16 @@ function process() {
             if (key === right) {
               spans[5].textContent = `${Math.trunc((top * 100) / 30)}%`;
               spans[6].textContent = `${100 - Math.trunc((top * 100) / 30)}%`;
+            } else if (key === right1) {
+              spans[5].textContent = `${Math.trunc((top * 100) / 30)}%`;
+            } else if (key === right2) {
+              spans[6].textContent = `${100 - Math.trunc((top * 100) / 30)}%`;
             } else if (key === left) {
               spans[4].textContent = `${Math.trunc((top * 100) / 30)}%`;
+              spans[7].textContent = `${100 - Math.trunc((top * 100) / 30)}%`;
+            } else if (key === left1) {
+              spans[4].textContent = `${Math.trunc((top * 100) / 30)}%`;
+            } else if (key === left2) {
               spans[7].textContent = `${100 - Math.trunc((top * 100) / 30)}%`;
             }
           }
@@ -132,3 +168,14 @@ function process() {
     navigator.clipboard.writeText(block.textContent);
   });
 }
+
+switcher.addEventListener("click", function (e) {
+  switcher.classList.toggle("complex");
+  modeContainer.forEach((ele) => ele.classList.toggle("active"));
+  keys = document.querySelectorAll(".item-container.active span:not(.item");
+  itemContainer = document.querySelector(".item-container.active");
+  containerRect = itemContainer.getBoundingClientRect();
+  item = document.querySelector(".active .item");
+  console.log(keys, itemContainer);
+  spans.forEach((ele) => (ele.textContent = "50%"));
+});

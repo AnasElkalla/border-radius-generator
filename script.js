@@ -20,7 +20,7 @@ const block = document.querySelector(".block");
 const modeContainer = document.querySelectorAll(".item-container");
 const switcher = document.querySelector(".switcher");
 const fontsize = parseInt(window.getComputedStyle(document.body).fontSize);
-console.log(fontsize);
+console.log(fontsize, up.classList);
 let eventing1;
 let eventing2;
 let eventing3;
@@ -178,4 +178,14 @@ switcher.addEventListener("click", function (e) {
   item = document.querySelector(".active .item");
   console.log(keys, itemContainer);
   spans.forEach((ele) => (ele.textContent = "50%"));
+  document
+    .querySelectorAll(".item")
+    .forEach((ele) => (ele.style.cssText = `${block.textContent}`));
+  keys.forEach((ele) => {
+    if (/up|bottom/.test(ele.classList[0])) {
+      ele.style.left = "50%";
+    } else if (/right|left/.test(ele.classList[0])) {
+      ele.style.top = "50%";
+    }
+  });
 });

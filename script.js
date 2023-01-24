@@ -41,7 +41,6 @@ window.addEventListener("load", function (e) {
     eventing1 = "mousemove";
     eventing2 = "mousedown";
     eventing3 = "mouseup";
-    console.log(false, navigator.userAgent);
     process();
   }
 });

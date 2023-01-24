@@ -228,7 +228,7 @@ header {
 }
 h1 {
   font-size: 4rem;
-  transform: translateX(7rem);
+  margin-left:calc(50% - 350px);
   width: 0;
   height: 50%;
   animation: stretch 5s linear forwards;
@@ -237,13 +237,13 @@ h1 {
 }
 @keyframes stretch {
   100% {
-    width: 80vw;
+    width: 700px;
   }
 }
 @media (max-width: 550px) {
   h1 {
     font-size: 3rem;
-    transform: translateX(0);
+   margin-left:10px;
   }
 }
 @media (max-width: 450px) {
